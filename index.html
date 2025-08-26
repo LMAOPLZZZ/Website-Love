@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter to My Love</title>
+    <meta name="description" content="An interactive love letter experience featuring beautiful bouquet designs with photo upload capabilities.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Hero Section with Interactive Letter -->
+        <section class="hero-section">
+            <!-- Floating background elements -->
+            <div class="floating-elements">
+                <div class="float-item float-1"></div>
+                <div class="float-item float-2"></div>
+                <div class="float-item float-3"></div>
+            </div>
+            
+            <div class="hero-content">
+                <h1 class="main-title">A Letter to My Love</h1>
+                <p class="subtitle">Hover to open the envelope and discover what's inside ;) </p>
+                
+                <!-- Interactive Letter -->
+                <div class="letter-envelope" id="letter-envelope">
+                    <!-- Envelope base -->
+                    <div class="envelope-base">
+                        <div class="heart-pattern"></div>
+                        <div class="gradient-overlay"></div>
+                    </div>
+                    
+                    <!-- Envelope flap -->
+                    <div class="letter-flap">
+                        <div class="gradient-overlay flap-overlay"></div>
+                    </div>
+                    
+                    <!-- Letter content -->
+                    <div class="letter-content">
+                        <div class="letter-greeting">To My Bestfriend</div>
+                        <div class="letter-text">
+                           As icarus fell he laughed knowing he once soared above the skies,
+                            Losing you means nothing as i have and will Love you past the universe.
+
+                        </div>
+                        <div class="letter-signature">Forever yours Erich ♡</div>
+                    </div>
+                    
+                    <!-- Wax seal -->
+                    <div class="wax-seal">
+                        <span>♡</span>
+                    </div>
+                </div>
+                
+                <!-- Scroll indicator -->
+                <div class="scroll-indicator">
+                    <p>Scroll down to see more</p>
+                    <div class="scroll-mouse" onclick="scrollToBouquet()">
+                        <div class="scroll-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Bouquet Gallery Section -->
+        <section id="bouquet-section" class="bouquet-section">
+            <div class="container">
+                <div class="section-header">
+                    <!-- Growing Flower SVG -->
+                    <svg class="growing-flower" width="80" height="80" viewBox="0 0 80 80">
+                        <!-- Stem -->
+                        <path d="M40 70 Q38 50 40 10" stroke="#22c55e" stroke-width="3" fill="none" class="stem"/>
+                        
+                        <!-- Leaves -->
+                        <ellipse cx="35" cy="35" rx="8" ry="4" fill="#16a34a" class="leaf leaf-1"/>
+                        <ellipse cx="45" cy="25" rx="6" ry="3" fill="#16a34a" class="leaf leaf-2"/>
+                        
+                        <!-- Flower center -->
+                        <circle cx="40" cy="15" r="4" fill="#fbbf24" class="flower-center"/>
+                        
+                        <!-- Petals -->
+                        <ellipse cx="40" cy="8" rx="3" ry="8" fill="#f472b6" class="petal petal-1"/>
+                        <ellipse cx="47" cy="10" rx="3" ry="8" fill="#f472b6" class="petal petal-2" transform="rotate(45 40 15)"/>
+                        <ellipse cx="48" cy="15" rx="3" ry="8" fill="#f472b6" class="petal petal-3" transform="rotate(90 40 15)"/>
+                        <ellipse cx="47" cy="20" rx="3" ry="8" fill="#f472b6" class="petal petal-4" transform="rotate(135 40 15)"/>
+                        <ellipse cx="40" cy="22" rx="3" ry="8" fill="#f472b6" class="petal petal-5" transform="rotate(180 40 15)"/>
+                        <ellipse cx="33" cy="20" rx="3" ry="8" fill="#f472b6" class="petal petal-6" transform="rotate(225 40 15)"/>
+                        <ellipse cx="32" cy="15" rx="3" ry="8" fill="#f472b6" class="petal petal-7" transform="rotate(270 40 15)"/>
+                        <ellipse cx="33" cy="10" rx="3" ry="8" fill="#f472b6" class="petal petal-8" transform="rotate(315 40 15)"/>
+                    </svg>
+                    
+                    <h2 class="bouquet-title">The "Bouquet" Collection</h2>
+                    <p class="bouquet-description">
+                        Each "flower" carefully chosen, each arrangement crafted with love, telling the story of romance in full bloom.
+                    </p>
+                </div>
+                
+                <!-- Bouquet Grid with Photo Upload -->
+                <div class="bouquet-grid">
+                    <div class="bouquet-item">
+                        <div class="bouquet-card photo-upload-card" data-slot="sweet-memories">
+                            <input type="file" class="file-input" accept="image/*" style="display: none;">
+                            <!-- FAILSAFE: REPLACE THIS SRC WITH YOUR IMAGE PATH -->
+                            <img src="Messenger_creation_EE4D5935-778D-4283-B0E6-4731F9B81A9F.jpeg" alt="Sweet Memories" class="bouquet-image fallback-image">
+                            
+                            <div class="placeholder-content">
+                                <div class="placeholder-heart">♡</div>
+                                <p>Drop your photo here or click to upload</p>
+                                <button class="upload-btn">📷 Add Photo</button>
+                            </div>
+                            <div class="photo-display" style="display: none;">
+                                <img class="uploaded-photo" alt="Sweet Memories">
+                                <div class="photo-overlay"></div>
+                                <div class="photo-controls">
+                                    <button class="control-btn replace-btn" title="Replace Photo">✏️</button>
+                                    <button class="control-btn delete-btn" title="Remove Photo">🗑️</button>
+                                </div>
+                            </div>
+                            <div class="upload-progress" style="display: none;">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <p>Uploading your memory...</p>
+                            </div>
+                            <div class="overlay"></div>
+                            <div class="card-info">
+                                <h3>Sweet Memories</h3>
+                                <p>A special moment</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bouquet-item">
+                        <div class="bouquet-card photo-upload-card" data-slot="pure-joy">
+                            <input type="file" class="file-input" accept="image/*" style="display: none;">
+                            <!-- FAILSAFE: REPLACE THIS SRC WITH YOUR IMAGE PATH -->
+                            <img src="Us4.jpeg" alt="Pure Joy" class="bouquet-image fallback-image">
+                            
+                            <div class="placeholder-content">
+                                <div class="placeholder-heart">♡</div>
+                                <p>Drop your photo here or click to upload</p>
+                                <button class="upload-btn">📷 Add Photo</button>
+                            </div>
+                            <div class="photo-display" style="display: none;">
+                                <img class="uploaded-photo" alt="Pure Joy">
+                                <div class="photo-overlay"></div>
+                                <div class="photo-controls">
+                                    <button class="control-btn replace-btn" title="Replace Photo">✏️</button>
+                                    <button class="control-btn delete-btn" title="Remove Photo">🗑️</button>
+                                </div>
+                            </div>
+                            <div class="upload-progress" style="display: none;">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <p>Uploading your memory...</p>
+                            </div>
+                            <div class="overlay"></div>
+                            <div class="card-info">
+                                <h3>Pure Joy</h3>
+                                <p>That beautiful smile</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bouquet-item">
+                        <div class="bouquet-card photo-upload-card" data-slot="happy-times">
+                            <input type="file" class="file-input" accept="image/*" style="display: none;">
+                            <!-- FAILSAFE: REPLACE THIS SRC WITH YOUR IMAGE PATH -->
+                            <img src="KRS09569.JPG" alt="Happy Times" class="bouquet-image fallback-image">
+                            
+                            <div class="placeholder-content">
+                                <div class="placeholder-heart">♡</div>
+                                <p>Drop your photo here or click to upload</p>
+                                <button class="upload-btn">📷 Add Photo</button>
+                            </div>
+                            <div class="photo-display" style="display: none;">
+                                <img class="uploaded-photo" alt="Happy Times">
+                                <div class="photo-overlay"></div>
+                                <div class="photo-controls">
+                                    <button class="control-btn replace-btn" title="Replace Photo">✏️</button>
+                                    <button class="control-btn delete-btn" title="Remove Photo">🗑️</button>
+                                </div>
+                            </div>
+                            <div class="upload-progress" style="display: none;">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <p>Uploading your memory...</p>
+                            </div>
+                            <div class="overlay"></div>
+                            <div class="card-info">
+                                <h3>Happy Times</h3>
+                                <p>Laughter and love</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Large Feature Bouquets -->
+                <div class="feature-bouquets">
+                    <div class="feature-bouquet" onclick="openGallery('My Everything', 'The most precious person in my life')">
+                        <div class="feature-card">
+                            <!-- FAILSAFE: REPLACE THIS SRC WITH YOUR IMAGE PATH -->
+                            <img src="KRS09634.JPG" alt="My Everything" class="bouquet-image">
+                            <div class="feature-overlay"></div>
+                            <div class="feature-info">
+                                <h3>My Everything</h3>
+                                <p>The most precious person in my life</p>
+                                <div class="click-hint">Click to expand gallery →</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-bouquet" onclick="openGallery('Our Future', 'All the dreams we\'ll build together')">
+                        <div class="feature-card">
+                            <!-- FAILSAFE: REPLACE THIS SRC WITH YOUR IMAGE PATH -->
+                            <img src="Messenger_creation_AA7CFBC4-624F-4973-97E9-18EFE098058F.jpeg" alt="Our Future" class="bouquet-image">
+                            <div class="feature-overlay"></div>
+                            <div class="feature-info">
+                                <h3>Our Future</h3>
+                                <p>All the dreams we'll build together</p>
+                                <div class="click-hint">Click to expand gallery →</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="gallery-modal">
+        <div class="gallery-content">
+            <button class="close-gallery" onclick="closeGallery()">×</button>
+            
+            <div class="gallery-header">
+                <h2 class="gallery-title" id="gallery-title-text">My Everything</h2>
+                <p class="gallery-subtitle" id="gallery-subtitle-text">The most precious person in my life</p>
+            </div>
+            
+            <div class="photo-grid"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
